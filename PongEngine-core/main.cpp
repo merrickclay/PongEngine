@@ -1,13 +1,12 @@
 #include <iostream>
 
-
-#include "src/graphics/window.h"
+#include "src/core/Application.h"
+#include "src/core/Input.h"
 
 void error_callback(int error, const char* description);
 
 int main() {
 	using namespace pongEngine;
-	using namespace graphics;
 	glfwSetErrorCallback(error_callback);
 	if (!glfwInit()) {
 		std::cerr << "GLFW initialization failed" << std::endl;
@@ -16,15 +15,16 @@ int main() {
 		std::cout << "GLFW initialization succeeded" << std::endl;
 	}
 
-	Window window("Pong Engine", 640, 480);
-	while (!window.closed()) {
-		window.clear();
+	Application app = Application("Pong Engine");
+	Window currWindow = app.GetInstance().GetWindow();
+	while (!currWindow.Closed()) {
+		currWindow.Clear();
 		glBegin(GL_TRIANGLES);
 		glVertex2f(-0.5f, -0.5f);
 		glVertex2f( 0.0f, 0.5f);
 		glVertex2f( 0.5f, -0.5f);
 		glEnd();
-		window.update();
+		currWindow.Update();
 	}
 
 	glfwTerminate();
