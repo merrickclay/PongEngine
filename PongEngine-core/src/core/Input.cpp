@@ -9,9 +9,9 @@ namespace pongEngine {
 		return glfwGetMouseButton(glfwGetCurrentContext(), button);
 	}
 
-	glm::vec2 Input::GetMousePosition() {
+	math::vec2 Input::GetMousePosition() {
 		double x, y;
 		glfwGetCursorPos(glfwGetCurrentContext(), &x, &y);
-		return glm::vec2(x, y);
+		return math::vec2(x, y);
 	}
 }

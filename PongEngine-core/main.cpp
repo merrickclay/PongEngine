@@ -2,11 +2,13 @@
 
 #include "src/core/Application.h"
 #include "src/core/Input.h"
+#include "src/math/vec2.h"
 
 void error_callback(int error, const char* description);
 
 int main() {
 	using namespace pongEngine;
+	using namespace math;
 	glfwSetErrorCallback(error_callback);
 	if (!glfwInit()) {
 		std::cerr << "GLFW initialization failed" << std::endl;
